@@ -14,6 +14,7 @@ public class Funcionario {
         this.nome = nome;
         this.dataDeAdmissao = dataDeAdmissao;
         this.salario = salario;
+        formataSalario();
     }
 
     public String getNome() {
@@ -25,10 +26,16 @@ public class Funcionario {
     }
 
     public BigDecimal getSalario() {
-        return salario.setScale(2, RoundingMode.HALF_UP);
+        return salario;
     }
 
     public void aplicaReajuste(BigDecimal valorReajuste) {
         salario = salario.add(valorReajuste);
+        formataSalario();
+
+    }
+
+    private void formataSalario() {
+        salario = salario.setScale(2, RoundingMode.HALF_UP);
     }
 }

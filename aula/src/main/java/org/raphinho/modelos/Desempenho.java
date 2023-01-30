@@ -1,4 +1,4 @@
-package org.raphinho.services;
+package org.raphinho.modelos;
 
 import java.math.BigDecimal;
 

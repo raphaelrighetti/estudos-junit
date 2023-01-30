@@ -1,5 +1,6 @@
 package org.raphinho.services;
 
+import org.raphinho.modelos.Desempenho;
 import org.raphinho.modelos.Funcionario;
 
 import java.math.BigDecimal;

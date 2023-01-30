@@ -28,3 +28,50 @@ O ciclo é da seguinte forma:
 
 E o ciclo continua para cada mudança ou implementação.
 
+============TESTES COM EXCEPTIONS============
+
+Para testarmos se um método gera uma Exception, podemos usar o método:
+
+  Assertions.assertThrows(<Exception>.class, () -> <método>);
+
+Dessa forma, o teste irá passar se a Exception que passamos por parâmetro for a mesma que for gerada pelo método testado.
+Essa lambda que passamos vira um Executable.
+
+Também podemos usar um try / catch com um fail("mensagem"); abaixo da linha de ação do try que gerá a Exception, onde o teste passará somente se entrar no catch, pois falhará quando chegar no fail("mensagem"); se a Exception não for gerada.
+Podemos validar valores de variáveis dentro do catch, quando fazemos o teste dessa forma, mas normalmente iremos fazer da primeira forma mostrada mesmo.
+
+============POSSÍVEIS TESTES============
+
+Normalmente temos 3 tipos de testes:
+
+  1. O teste em que checamos o valor de retorno de algum método.
+  2. O teste em que checamos se algum método que faz alguma ação realmente fez aquela ação.
+  3. O teste em que checamos se algum método está retornando uma Exception (que, nesse caso, é o esperado), onde também podemos checar se a mensagem da Exception está certa e etc.
+
+============REFATORAR TESTE============
+
+Podemos e devemos refatorar as nossas classes de teste, pois quanto mais legíveis e com menos duplicação de código os métodos de teste estiverem, melhor vai ser de mudarmos nossos testes e entender o que está acontecendo.
+
+Muitas vezes quando estamos testando, temos objetos que precisam ser instanciados com alguns valores para que possamos testar eles, o que pode gerar muita duplicção de código nos nossos testes. Para combater isso, podemos tornar essa inicialização dos objetos um método da nossa classe de teste, que será excutado para todos os testes que fizermos. Para não termos que ficar chamando esse método a todo teste que fazemos, existe a Annotation "@BeforeEach", que executará o método que colocamos debaixo dela antes para todos os métodos de teste.
+
+Existe também o @AfterEach, que executa o método escolhido para todos os testes, após a execução dos testes.
+
+Existem também os métodos:
+
+  - @BeforeAll
+  - @AfterAll
+
+Que são similares aos citados acima, mas não são executados para todos, só são executados uma vez, como os próprios nomes deles sugerem. Eles precisam ser estáticos.
+
+============TESTAR MÉTODOS PRIVADOS============
+
+Métodos privados são métodos utilitários que são usados internamente na nossa classe, ou seja, não tem por que testarmos eles, afinal já estamos testando ele quando testamos algum método que utiliza ele internamente.
+
+============O QUE TESTAR?============
+
+Nunca devemos testar tudo no nosso projeto, tem coisas que não fazem sentido serem testadas, como Getters e Setters, por exemplo.
+
+O importante é lembrar que devemos testar classes e métodos que envolvam regras de negócio, lógicas e certa complexidade, pois nesses casos que podemos ter várias situações onde algo inesperado pode acontecer.
+
+Um fator importante também é a quantidade de mudanças que uma classe pode sofrer no futuro. Se for uma classe que vai ser modificada constantemente no futuro, faz muito sentido ter testes, pois mudanças podem quebrar a nossa implementação, e os testes vão nos garantir de que as mudanças que estamos fazendo são seguras.
+
