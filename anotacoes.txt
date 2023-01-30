@@ -1,0 +1,30 @@
+JUnit é a biblioteca padrão utilizada no Java para fazer testes de unidade.
+
+Por convenção, no JUnit, as classes de teste devem ter o mesmo nome das classes a serem testadas, só que terminando com um Test.
+
+Existem vários tipos de testes, sendo os testes de unidade os mais simples de todos. Existem também outras bibliotecas específicas para outros tipos de testes, algumas usando o JUnit por baixo dos panos.
+
+O JUnit é uma biblioteca como qualquer outra, ou seja, devemos ter os .jar dela para a utilizarmos. (podemos utilizar Maven e etc. para importarmos mais facilmente as dependências.
+
+No JUnit, cada situação específica que precisamos testar é um método diferente, normalmente colocamos uma breve descrição da situação de nome do método.
+
+============@Test============
+
+Quando colocamos essa Annotation no nosso método, conseguimos rodar o nosso código como um código de teste JUnit, mas ele não estará verificando nada, então sempre dará certo.
+
+============Assertions.assertEquals(expected, variable)============
+
+É o método que vai checar se um valor de uma variável de nossa escolha é o valor que esperamos, que é o primeiro valor que passamos por parâmetro.
+
+============TDD (Test Driven Development)============
+
+TDD consiste em criarmos primeiro os testes automatizados, servindo como um rascunho e dando uma base de como a nossa implementação vai funcionar, para depois criarmos o código real, com base nos requisitos que fizemos nos testes.
+
+O ciclo é da seguinte forma:
+
+  - Teste
+  - Implementação
+  - Refatorar
+
+E o ciclo continua para cada mudança ou implementação.
+
